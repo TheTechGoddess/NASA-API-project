@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing Nasa Pictures</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  </head>
+<body>
+     <!-- Loader -->
+<div class="loader hidden">
+    <h2><i class="fas fa-spinner"></i></h2>
+  </div>
+<div class="main-containers">
+    <div class="containers">
+      <!-- navigation -->
+      <div class="navigation-containers">
+        <span class="background"></span>
+
+        <h3><center>Nasa Pictures</center></h3>
+        <!-- results Nav -->
+        <span class="navigation-items" id="resultsNav">
+            <h3 class="clickable" onclick="updateDOM('favorites')"><i id="liked" class="fas fa-heart"></i>s &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+            <h3 class="clickable" onclick="getNasaPictures()">Next Page</h3>
+        </span>
+        
+        <!-- Liked Nav -->
+        <span class="navigation-items hidden" id="favoritesNav">
+          <h3 class="clickable" onclick="getNasaPictures()">Go Back</h3>
+        </span>
+    </div>
+</div>
+  <div class="flex-container">
+    <div class="images-container"></div>
+  </div>
+    
+    
+    <!-- save confiramtion -->
+    <div class="save-confirmed" hidden>
+      <h2 class="added">Liked picture added to <i class="fas fa-heart"></i>s</h2>
+    </div>
+  </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

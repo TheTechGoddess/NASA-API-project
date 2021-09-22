@@ -25,7 +25,7 @@ function showContent(page) {
 }
 
 function createDOMNodes(page) {
-  const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
+  const currentArray = page === 'results' ? resultsArray : Object.values(liked);
 
   currentArray.forEach(result => {
     //card container
@@ -49,7 +49,7 @@ function createDOMNodes(page) {
     const cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title');
     cardTitle.textContent = result.title;
-    // p for add to favorites
+    // p for add to likes
     const saveText = document.createElement('p');
     saveText.classList.add('clickable');
     if (page === 'results') {
@@ -85,9 +85,9 @@ function createDOMNodes(page) {
 }
 
 function updateDOM(page) {
-  // get favorites from localstorage
+  // get likes from localstorage
   if (localStorage.getItem('nasaFavorites')) {
-    favorites = JSON.parse(localStorage.getItem('nasaFavorites'));
+    liked = JSON.parse(localStorage.getItem('nasaFavorites'));
   }
   imagesContainer.textContent = '';
   createDOMNodes(page);
@@ -108,31 +108,31 @@ async function getNasaPictures() {
   }
 }
 
-//add result to favorites
+//add result to likes
 function saveFavorite(itemURL) {
   resultsArray.forEach(item => {
-    if (item.url.includes(itemURL) && !favorites[itemURL]) {
-      favorites[itemURL] = item;
+    if (item.url.includes(itemURL) && !liked[itemURL]) {
+      liked[itemURL] = item;
       //show save confirmation for 2 seconds
       saveConfirmed.hidden = false;
       setTimeout(() => {
         saveConfirmed.hidden = true;
       }, 2000);
 
-      // set favorites in localstorage
-      localStorage.setItem('nasaFavorites', JSON.stringify(favorites));
+      // set likes in localstorage
+      localStorage.setItem('nasaFavorites', JSON.stringify(liked));
     }
   });
 }
 
-//remove items from Favorites
+//remove items from likes
 function removeFavorite(itemURL) {
-  if (favorites[itemURL]) {
-    delete favorites[itemURL];
+  if (liked[itemURL]) {
+    delete liked[itemURL];
 
     // set favorites in localstorage
-    localStorage.setItem('nasaFavorites', JSON.stringify(favorites));
-    updateDOM('favorites');
+    localStorage.setItem('nasaFavorites', JSON.stringify(liked));
+    updateDOM('liked');
   }
 }
 
